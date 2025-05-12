@@ -376,6 +376,49 @@
                 margin: 0 auto;
             }
         }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Creates 3 equal columns */
+            gap: 20px;
+            /* Space between grid items */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .image-title {
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns on medium screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+                /* 1 column on small screens */
+            }
+        }
     </style>
     <!-- Include KaTeX for math support -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
@@ -469,9 +512,47 @@
 
                 <h2 id="results">Experiments</h2>
                 <h3 id="subsection">Conditional Image Generation</h3>
-                We would like to generate images
                 We would like to generate images based on the "large-scale" or "small-scale characteristics" of a given
                 image.
+
+
+                <figure>
+                    <img src="images/7.png">
+                </figure>
+
+
+                <div class="image-grid">
+                    <!-- Grid Item 1 -->
+                    <div class="grid-item">
+                        <h4 class="image-title">Full-Band Reconstruction</h4>
+                        <img src="images/7-111111.png" alt="Description of image 1">
+                    </div>
+
+                    <!-- Grid Item 2 -->
+                    <div class="grid-item">
+                        <h4 class="image-title">Frequencies 0 - 0.5</h4>
+                        <img src="images/7-111110.png" alt="Description of image 2">
+                    </div>
+
+                    <!-- Grid Item 3 -->
+                    <div class="grid-item">
+                        <h4 class="image-title">Frequencies 0 - 0.25</h4>
+                        <img src="images/7-111100.png" alt="Description of image 3">
+                    </div>
+                    <div class="grid-item">
+                        <h4 class="image-title">Frequencies 0 - 0.125</h4>
+                        <img src="images/7-111000.png" alt="Description of image 3">
+                    </div>
+                    <div class="grid-item">
+                        <h4 class="image-title">Frequencies 0 - 0.0625</h4>
+                        <img src="images/7-110000.png" alt="Description of image 3">
+                    </div>
+                    <div class="grid-item">
+                        <h4 class="image-title">Frequency 0</h4>
+                        <img src="images/7-100000.png" alt="Description of image 3">
+                    </div>
+                    <!-- Add more grid items as needed -->
+                </div>
 
 
 
