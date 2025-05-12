@@ -424,28 +424,56 @@
                 <p>Introduction Paragraph 2.</p>
 
                 <h2 id="methods">Methods</h2>
-                <h3 id="subsection">Overview</h3>
+                <p>In the original Diffusion Autoencoder, the encoder produces a non-spatial latent vector capturing the
+                    semantic properties of the image.
+
+                    In contrast, the encoder of our <em>Frequency-Masked Diffusion
+                        Autoencoder</em> produces a <em>latent feature map</em> whose spatial dimensions <em>equal</em>
+                    that of the image. We train a diffusion model (the "decoder"), conditioned on a frequency-masked
+                    version of this feature map.</p>
+
+                <p>Figure 1 shows a diagram of our Frequency-Masked Diffusion Autoencoder, which consists of three main
+                    components.
+                </p>
+
+
                 <figure>
                     <img src="images/Method_Diagram.png" alt="Our Frequency-Masked Diffusion Autoencoder">
-                    <figcaption>Figure 1: A Diagram of our Frequency-Masked Diffusion Autoencoder.</figcaption>
+                    <figcaption>Figure 1: Training our Frequency-Masked Diffusion Autoencoder</figcaption>
                 </figure>
 
-                <p> The encoder of the original Diffusion
-                    Autoencoder produces a non-spatial latent vector that captures the semantic content of the
-                    entire
-                    image. In contrast, the encoder of our <em>Frequency-Masked Diffusion
-                        Autoencoder</em> produces a <em>latent feature map</em> whose spatial dimensions equal
-                    that of the image.
-                </p>
+
+                <h3 id="subsection">Training</h3>
+
+                Each training iteration consists of three steps:
+                <ul>
+                    <li>First, the <b>encoder</b> converts an image into a latent feature map with the
+                        same spatial resolution.
+                    </li>
+                    <li>Second, we <b>randomly mask</b> this feature map in the frequency domain. We provide more
+                        details for this in the next section.
+                    <li>Third, the <b>decoder</b> attempts to reconstruct the input image from the masked feature map,
+                        and a noisy version of the image.
+                </ul>
+
                 <p>
-                    <strong>During Training</strong>, we pass an image through the encoder to to obtain a latent
-                    feature map. We then apply a random mask to the feature map in the frequency domain, by randomly
-                    removing bins from the feature map's Discrete Fourier Transform.
+                    In other words, the decoder is a conditional diffusion model, where the conditions are masked
+                    feature maps. We train both the encoder and the diffusion model (decoder) simulatenously.
                 </p>
 
 
+                <h3 id="subsection">Frequency Domain Masking</h3>
+                Applying frequency domain
 
-                <h2 id="results">Results</h2>
+
+
+                <h2 id="results">Experiments</h2>
+                <h3 id="subsection">Conditional Image Generation</h3>
+                We would like to generate images
+                We would like to generate images based on the "large-scale" or "small-scale characteristics" of a given
+                image.
+
+
 
                 <h2 id="discussion">Discussion</h2>
 
@@ -454,8 +482,10 @@
                 <h2 id="references">References</h2>
                 <div class="references">
                     <div class="citation" id="cite-1">
-                        Konpat Preechakul, Nattanat Chatthee, Suttisak Wizadwongsa, and Supasorn Suwajanakorn. 2022.
-                        Diffusion autoencoders: Toward a meaningful and decodable representation. In <em>Proceedings
+                        Konpat Preechakul, Nattanat Chatthee, Suttisak Wizadwongsa, and Supasorn Suwajanakorn.
+                        2022.
+                        Diffusion autoencoders: Toward a meaningful and decodable representation. In
+                        <em>Proceedings
                             of
                             the IEEE/CVF conference on computer vision and pattern recognition.</em> 10619–10629
                     </div>
