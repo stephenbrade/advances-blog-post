@@ -424,105 +424,43 @@
                 <p>Introduction Paragraph 2.</p>
 
                 <h2 id="methods">Methods</h2>
-                <p>You can also have citations in parentheses at the end of sentences <span class="citation-reference"
-                        data-citation-id="1">[1]<span class="citation-tooltip">Smith, J., Johnson, A.,
-                            & Williams, B. (2023). Title of paper. <em>Journal Name</em>, 10(2), 123-456.</span></span>.
-                    For methods sections, this style is often preferred.</p>
-
-                <p>Code can be included like this:</p>
-                <pre><code>import numpy as np
-import matplotlib.pyplot as plt
-
-def some_function(x):
-    return np.sin(x) * np.exp(-0.1 * x)
-    
-x = np.linspace(0, 10, 100)
-plt.plot(x, some_function(x))
-plt.show()</code></pre>
-
-                <h3 id="subsection">A Subsection Title</h3>
-                <p>Subsections help organize your content for better readability. Distill articles tend to use a clear
-                    hierarchy of headings to structure information logically. You can also include inline math like \(E
-                    = mc^2\) within your text.</p>
-
-                <p>Mathematical equations can be included using KaTeX:</p>
-                <div class="equation">
-                    $e^{i\pi} + 1 = 0$
-                </div>
-
-                <h2 id="results">Results</h2>
-                <p>In this section, you would typically present your findings and analysis. Distill articles excel at
-                    presenting results clearly with a focus on visual clarity.</p>
-
+                <h3 id="subsection">Overview</h3>
                 <figure>
-                    <img src="/api/placeholder/600/400" alt="An example figure">
-                    <figcaption>Figure 1: This is a placeholder for a figure. In your actual document, you would include
-                        relevant images, charts, or diagrams.</figcaption>
+                    <img src="images/Method_Diagram.png" alt="Our Frequency-Masked Diffusion Autoencoder">
+                    <figcaption>Figure 1: A Diagram of our Frequency-Masked Diffusion Autoencoder.</figcaption>
                 </figure>
 
-                <p>Tables can also be included to present structured data:</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Method</th>
-                            <th>Accuracy</th>
-                            <th>Runtime (ms)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Method A</td>
-                            <td>94.2%</td>
-                            <td>127</td>
-                        </tr>
-                        <tr>
-                            <td>Method B</td>
-                            <td>92.7%</td>
-                            <td>82</td>
-                        </tr>
-                        <tr>
-                            <td>Method C</td>
-                            <td>96.1%</td>
-                            <td>219</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p> The encoder of the original Diffusion
+                    Autoencoder produces a non-spatial latent vector that captures the semantic content of the
+                    entire
+                    image. In contrast, the encoder of our <em>Frequency-Masked Diffusion
+                        Autoencoder</em> produces a <em>latent feature map</em> whose spatial dimensions equal
+                    that of the image.
+                </p>
+                <p>
+                    <strong>During Training</strong>, we pass an image through the encoder to to obtain a latent
+                    feature map. We then apply a random mask to the feature map in the frequency domain, by randomly
+                    removing bins from the feature map's Discrete Fourier Transform.
+                </p>
+
+
+
+                <h2 id="results">Results</h2>
 
                 <h2 id="discussion">Discussion</h2>
-                <p>The discussion section allows you to interpret your results, compare them with existing work, and
-                    explore implications or limitations of your findings.</p>
-
-                <p>Distill articles often include asides for supplementary information:</p>
-                <aside>
-                    <strong>Note:</strong> This is an example of an aside. Asides are useful for definitions,
-                    clarifications, or tangential points that might be interesting but aren't essential to the main flow
-                    of the article.
-                </aside>
 
                 <h2 id="conclusion">Conclusion</h2>
-                <p>Summarize your key findings and their significance. You might also discuss potential future
-                    directions for research or applications of your work.</p>
-
-                <div class="footnotes">
-                    <div class="footnote" id="fn1">
-                        <sup>1</sup> This is an example of a footnote. Footnotes provide additional context or
-                        references without interrupting the flow of the main text.
-                    </div>
-                    <div class="footnote" id="fn2">
-                        <sup>2</sup> Here's another footnote example.
-                    </div>
-                </div>
 
                 <h2 id="references">References</h2>
                 <div class="references">
-                    <div class="citation" id="cite-1">Smith, J., Johnson, A., & Williams, B. (2023). Title of paper.
-                        <em>Journal Name</em>, 10(2), 123-456.
+                    <div class="citation" id="cite-1">
+                        Konpat Preechakul, Nattanat Chatthee, Suttisak Wizadwongsa, and Supasorn Suwajanakorn. 2022.
+                        Diffusion autoencoders: Toward a meaningful and decodable representation. In <em>Proceedings
+                            of
+                            the IEEE/CVF conference on computer vision and pattern recognition.</em> 10619–10629
                     </div>
-                    <div class="citation" id="cite-2">Lee, M., & Kim, S. (2024). Another relevant paper. <em>Conference
-                            Proceedings</em>, 789-012.</div>
                 </div>
             </div>
-        </div>
     </main>
 
     <script>
