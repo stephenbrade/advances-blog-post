@@ -419,6 +419,69 @@
                 /* 1 column on small screens */
             }
         }
+
+        .small-img {
+            /* make it roughly one‑third of the text‑width */
+            max-width: 90%;
+            /* or a fixed width: 300px, 200px, whatever you like */
+            /* max-width: 300px; */
+
+            height: auto;
+            display: block;
+            margin: 32px auto;
+            /* centers it and gives vertical space */
+        }
+
+
+        /* two‑column wrapper */
+        /* ensure the two‑column grid centers vertically */
+        .two-column {
+            display: grid;
+            grid-template-columns: 30% 70%;
+            /* adjust 300px as desired */
+            gap: 20px;
+            align-items: center;
+            margin: 32px 0;
+        }
+
+        /* left‑column figure (input image + caption) */
+        .input-figure {
+            margin: 0;
+            text-align: center;
+        }
+
+        .input-figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .input-figure figcaption {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        /* make each grid‑item a figure with caption below the image */
+        figure.grid-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
+
+        figure.grid-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        figure.grid-item figcaption {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
     </style>
     <!-- Include KaTeX for math support -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
@@ -514,44 +577,78 @@
                 <h3 id="subsection">Conditional Image Generation</h3>
                 We would like to generate images based on the "large-scale" or "small-scale characteristics" of a given
                 image.
+                <!-- inside your .d-article-body, replace the two-column block with this: -->
+                <div class="two-column">
+                    <!-- LEFT COLUMN: single input image -->
+                    <figure class="input-figure">
+                        <img class="small-img" src="images/7.png" alt="Input Image" />
+                        <figcaption>Input Image</figcaption>
+                    </figure>
 
+                    <!-- RIGHT COLUMN: 2×3 grid of conditionals -->
+                    <div class="image-grid">
+                        <figure class="grid-item">
+                            <img src="images/7-111111.png" alt="Freq. 0 – 1">
+                            <figcaption>Freq. 0 – 1</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/7-111110.png" alt="Freq. 0 – 0.5">
+                            <figcaption>Freq. 0 – 0.5</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/7-111100.png" alt="Freq. 0 – 0.25">
+                            <figcaption>Freq. 0 – 0.25</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/7-111000.png" alt="Freq. 0 – 0.125">
+                            <figcaption>Freq. 0 – 0.125</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/7-110000.png" alt="Freq. 0 – 0.0625">
+                            <figcaption>Freq. 0 – 0.0625</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/7-100000.png" alt="Freq. 0">
+                            <figcaption>Freq. 0</figcaption>
+                        </figure>
+                    </div>
+                </div>
 
-                <figure>
-                    <img src="images/7.png">
-                </figure>
+                <!-- inside your .d-article-body, replace the two-column block with this: -->
+                <div class="two-column">
+                    <!-- LEFT COLUMN: single input image -->
+                    <figure class="input-figure">
+                        <img class="small-img" src="images/0.png" alt="Input Image" />
+                        <figcaption>Input Image</figcaption>
+                    </figure>
 
-
-                <div class="image-grid">
-                    <!-- Grid Item 1 -->
-                    <div class="grid-item">
-                        <h4 class="image-title">Full-Band Reconstruction</h4>
-                        <img src="images/7-111111.png" alt="Description of image 1">
+                    <!-- RIGHT COLUMN: 2×3 grid of conditionals -->
+                    <div class="image-grid">
+                        <figure class="grid-item">
+                            <img src="images/0-111111.png" alt="Freq. 0 – 1">
+                            <figcaption>Freq. 0 – 1</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/0-111110.png" alt="Freq. 0 – 0.5">
+                            <figcaption>Freq. 0 – 0.5</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/0-111100.png" alt="Freq. 0 – 0.25">
+                            <figcaption>Freq. 0 – 0.25</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/0-111000.png" alt="Freq. 0 – 0.125">
+                            <figcaption>Freq. 0 – 0.125</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/0-110000.png" alt="Freq. 0 – 0.0625">
+                            <figcaption>Freq. 0 – 0.0625</figcaption>
+                        </figure>
+                        <figure class="grid-item">
+                            <img src="images/0-100000.png" alt="Freq. 0">
+                            <figcaption>Freq. 0</figcaption>
+                        </figure>
                     </div>
-
-                    <!-- Grid Item 2 -->
-                    <div class="grid-item">
-                        <h4 class="image-title">Frequencies 0 - 0.5</h4>
-                        <img src="images/7-111110.png" alt="Description of image 2">
-                    </div>
-
-                    <!-- Grid Item 3 -->
-                    <div class="grid-item">
-                        <h4 class="image-title">Frequencies 0 - 0.25</h4>
-                        <img src="images/7-111100.png" alt="Description of image 3">
-                    </div>
-                    <div class="grid-item">
-                        <h4 class="image-title">Frequencies 0 - 0.125</h4>
-                        <img src="images/7-111000.png" alt="Description of image 3">
-                    </div>
-                    <div class="grid-item">
-                        <h4 class="image-title">Frequencies 0 - 0.0625</h4>
-                        <img src="images/7-110000.png" alt="Description of image 3">
-                    </div>
-                    <div class="grid-item">
-                        <h4 class="image-title">Frequency 0</h4>
-                        <img src="images/7-100000.png" alt="Description of image 3">
-                    </div>
-                    <!-- Add more grid items as needed -->
                 </div>
 
 
