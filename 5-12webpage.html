@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Distill-Style Standalone Template</title>
+    <style>
+        /* Distill-inspired styles */
+        :root {
+            --body-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+            --heading-font: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --mono-font: Menlo, monospace;
+            --body-text-color: rgba(0, 0, 0, 0.8);
+            --heading-text-color: rgba(0, 0, 0, 0.8);
+            --paper-background: white;
+            --max-width: 800px;
+            --side-margin: 20px;
+        }
+
+        body {
+            font-family: var(--body-font);
+            color: var(--body-text-color);
+            line-height: 1.6;
+            background: var(--paper-background);
+            margin: 0;
+            padding: 0;
+            font-size: 17px;
+        }
+
+        main {
+            display: block;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--side-margin);
+        }
+
+        header {
+            padding: 60px 0 40px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--heading-font);
+            color: var(--heading-text-color);
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-top: 36px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            font-family: var(--mono-font);
+            font-size: 85%;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        pre code {
+            display: block;
+            overflow-x: auto;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.05);
+            font-size: 85%;
+            line-height: 1.45;
+            border-radius: 3px;
+        }
+
+        figure {
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        figcaption {
+            font-size: 15px;
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        blockquote {
+            margin-left: 0;
+            border-left: 3px solid rgba(0, 0, 0, 0.2);
+            padding-left: 20px;
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 32px 0;
+            font-size: 16px;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+        }
+
+        table th {
+            background-color: rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .authors {
+            margin-bottom: 32px;
+            font-size: 17px;
+        }
+
+        .author {
+            display: inline-block;
+            margin-right: 16px;
+            margin-bottom: 8px;
+        }
+
+        .date {
+            color: rgba(0, 0, 0, 0.6);
+            margin-top: 16px;
+            font-size: 15px;
+        }
+
+        .abstract {
+            font-size: 17px;
+            line-height: 1.6;
+            margin: 36px auto;
+            max-width: 650px;
+            border-left: 3px solid rgba(0, 0, 0, 0.2);
+            padding: 0 20px;
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .equation {
+            padding: 16px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .footnotes {
+            font-size: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 24px;
+            margin-top: 48px;
+        }
+
+        .footnote {
+            margin-bottom: 16px;
+        }
+
+        .katex {
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 760px) {
+            :root {
+                --side-margin: 16px;
+            }
+
+            h1 {
+                font-size: 34px;
+            }
+
+            body {
+                font-size: 16px;
+            }
+        }
+
+        /* Two-column layout for wide screens with TOC in margin */
+        @media (min-width: 1000px) {
+            body {
+                display: grid;
+                grid-template-columns: minmax(200px, 1fr) minmax(0, 800px) minmax(200px, 1fr);
+                grid-column-gap: 40px;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+
+            header {
+                grid-column: 2;
+            }
+
+            main {
+                grid-column: 2;
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .sticky-toc {
+                grid-column: 1;
+                position: sticky;
+                top: 20px;
+                align-self: start;
+                padding-top: 60px;
+                height: 100vh;
+                overflow-y: auto;
+            }
+
+            .d-article {
+                display: block;
+            }
+        }
+
+        /* Special elements like asides and citations */
+        aside {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 16px 20px;
+            margin: 32px 0;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        /* Citation styles */
+        .citation-reference {
+            color: #0366d6;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(3, 102, 214, 0.5);
+        }
+
+        .citation-reference:hover {
+            background: rgba(3, 102, 214, 0.1);
+            border-bottom: 1px solid rgba(3, 102, 214, 0.8);
+        }
+
+        .citation-tooltip {
+            display: none;
+            position: absolute;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            max-width: 400px;
+            z-index: 100;
+            line-height: 1.5;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .citation-reference:hover .citation-tooltip {
+            display: block;
+        }
+
+        .references {
+            margin-bottom: 64px;
+            counter-reset: citation-counter;
+        }
+
+        .citation {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 15px;
+            margin-bottom: 12px;
+            padding-left: 2.5em;
+            text-indent: -2.5em;
+        }
+
+        .citation::before {
+            counter-increment: citation-counter;
+            content: "[" counter(citation-counter) "] ";
+            font-weight: bold;
+        }
+
+        /* Additional styling for left-margin TOC */
+        .sticky-toc {
+            padding-right: 15px;
+        }
+
+        @media (min-width: 1000px) {
+            .sticky-toc {
+                position: fixed;
+                width: 180px;
+                top: 20px;
+                left: max(calc(50% - 600px), 20px);
+            }
+        }
+
+        .sticky-toc h3 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .toc ul {
+            padding-left: 18px;
+            list-style-type: none;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .toc>ul {
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .toc a {
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+            color: #0366d6;
+        }
+
+        /* Adjust for mobile */
+        @media (max-width: 999px) {
+            body {
+                display: block;
+            }
+
+            .sticky-toc {
+                position: relative;
+                width: auto;
+                left: auto;
+                max-width: var(--max-width);
+                margin: 0 auto 32px;
+                padding: 16px var(--side-margin);
+            }
+
+            header,
+            main {
+                max-width: var(--max-width);
+                padding: 0 var(--side-margin);
+                margin: 0 auto;
+            }
+        }
+    </style>
+    <!-- Include KaTeX for math support -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+</head>
+
+<body>
+    <div class="sticky-toc">
+        <h3>Contents</h3>
+        <nav class="toc">
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#methods">Methods</a>
+                    <ul>
+                        <li><a href="#subsection">A Subsection Title</a></li>
+                    </ul>
+                </li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#discussion">Discussion</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+                <li><a href="#references">References</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Frequency-Masked Diffusion Autoencoders</h1>
+        <div class="authors">
+            <div class="author">Mason Wang</div>
+            <div class="author">Stephen Brade</div>
+        </div>
+        <div class="date">May 11, 2025</div>
+    </header>
+
+    <main>
+        <div class="abstract">
+            <p>This is the abstract for your paper. It should provide a brief summary of the article's content. The
+                abstract is typically a single paragraph that gives readers an overview of what to expect.</p>
+        </div>
+
+        <div class="d-article">
+            <div class="d-article-body">
+                <h2 id="introduction">Introduction</h2>
+                <p>Welcome to this Distill-style article template. Distill.pub is known for its beautiful, readable
+                    design specifically tailored for machine learning and technical content. This template provides a
+                    simplified, standalone version of that aesthetic.</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac
+                    tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla
+                    fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in
+                    libero. You can cite papers using the citation syntax like this <span class="citation-reference"
+                        data-citation-id="1">[1]<span class="citation-tooltip">Smith, J., Johnson, A.,
+                            & Williams, B. (2023). Title of paper. <em>Journal Name</em>, 10(2), 123-456.</span></span>.
+                    Multiple citations can be grouped together <span class="citation-reference"
+                        data-citation-id="1,2">[1,2]<span class="citation-tooltip">Multiple references: Smith et al.
+                            (2023) and Lee & Kim (2024)</span></span>.</p>
+
+                <h2 id="methods">Methods</h2>
+                <p>You can also have citations in parentheses at the end of sentences <span class="citation-reference"
+                        data-citation-id="1">[1]<span class="citation-tooltip">Smith, J., Johnson, A.,
+                            & Williams, B. (2023). Title of paper. <em>Journal Name</em>, 10(2), 123-456.</span></span>.
+                    For methods sections, this style is often preferred.</p>
+
+                <p>Code can be included like this:</p>
+                <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+def some_function(x):
+    return np.sin(x) * np.exp(-0.1 * x)
+    
+x = np.linspace(0, 10, 100)
+plt.plot(x, some_function(x))
+plt.show()</code></pre>
+
+                <h3 id="subsection">A Subsection Title</h3>
+                <p>Subsections help organize your content for better readability. Distill articles tend to use a clear
+                    hierarchy of headings to structure information logically. You can also include inline math like \(E
+                    = mc^2\) within your text.</p>
+
+                <p>Mathematical equations can be included using KaTeX:</p>
+                <div class="equation">
+                    $e^{i\pi} + 1 = 0$
+                </div>
+
+                <h2 id="results">Results</h2>
+                <p>In this section, you would typically present your findings and analysis. Distill articles excel at
+                    presenting results clearly with a focus on visual clarity.</p>
+
+                <figure>
+                    <img src="/api/placeholder/600/400" alt="An example figure">
+                    <figcaption>Figure 1: This is a placeholder for a figure. In your actual document, you would include
+                        relevant images, charts, or diagrams.</figcaption>
+                </figure>
+
+                <p>Tables can also be included to present structured data:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Accuracy</th>
+                            <th>Runtime (ms)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Method A</td>
+                            <td>94.2%</td>
+                            <td>127</td>
+                        </tr>
+                        <tr>
+                            <td>Method B</td>
+                            <td>92.7%</td>
+                            <td>82</td>
+                        </tr>
+                        <tr>
+                            <td>Method C</td>
+                            <td>96.1%</td>
+                            <td>219</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 id="discussion">Discussion</h2>
+                <p>The discussion section allows you to interpret your results, compare them with existing work, and
+                    explore implications or limitations of your findings.</p>
+
+                <p>Distill articles often include asides for supplementary information:</p>
+                <aside>
+                    <strong>Note:</strong> This is an example of an aside. Asides are useful for definitions,
+                    clarifications, or tangential points that might be interesting but aren't essential to the main flow
+                    of the article.
+                </aside>
+
+                <h2 id="conclusion">Conclusion</h2>
+                <p>Summarize your key findings and their significance. You might also discuss potential future
+                    directions for research or applications of your work.</p>
+
+                <div class="footnotes">
+                    <div class="footnote" id="fn1">
+                        <sup>1</sup> This is an example of a footnote. Footnotes provide additional context or
+                        references without interrupting the flow of the main text.
+                    </div>
+                    <div class="footnote" id="fn2">
+                        <sup>2</sup> Here's another footnote example.
+                    </div>
+                </div>
+
+                <h2 id="references">References</h2>
+                <div class="references">
+                    <div class="citation" id="cite-1">Smith, J., Johnson, A., & Williams, B. (2023). Title of paper.
+                        <em>Journal Name</em>, 10(2), 123-456.
+                    </div>
+                    <div class="citation" id="cite-2">Lee, M., & Kim, S. (2024). Another relevant paper. <em>Conference
+                            Proceedings</em>, 789-012.</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Render math equations using KaTeX
+        document.addEventListener("DOMContentLoaded", function () {
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        { left: "\\[", right: "\\]", display: true },
+                        { left: "\\(", right: "\\)", display: false },
+                        { left: "$", right: "$", display: false },
+                        { left: "$", right: "$", display: true }
+                    ],
+                    throwOnError: false
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
